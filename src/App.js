@@ -6,7 +6,6 @@ import Header from "./components/Header";
 import axios from "axios";
 
 
-
 const App = () => {
   const [modalShow, setModalShow] = useState(false);
   const [image, setImage] = useState();
@@ -22,7 +21,7 @@ const App = () => {
 
   const handleSave = async () => {
     setIsImageUploaded(false);
-    const response = await axios.post(`/api/citizen`, {
+    const response = await axios.post(`https://thai-card.onrender.com/api/citizen`, {
       idNumber,
       name,
       last_name,
@@ -50,7 +49,7 @@ const App = () => {
     console.log("IN DELETE CALL", idNumber);
     console.log(idNumber);
     try {
-      const response = await axios.delete(`/api/citizen/${idNumber}`);
+      const response = await axios.delete(`https://thai-card.onrender.com/api/citizen/${idNumber}`);
     } catch (error) {
       console.error("Error during data deletion:", error.message);
     }
@@ -90,7 +89,8 @@ const App = () => {
           ) : isImageUploaded && !imageloading ? (
             <Image src={image} thumbnail style={{ maxHeight: "200px" }} />
           ) : // The third case can be left empty or filled with another component or text
-          null}
+             null
+          }
           <div>
             <input
               type="text"
@@ -116,7 +116,7 @@ const App = () => {
             setImageLoading={setImageLoading}
           />
           {!imageloading && isImageUploaded ? (
-            <div className="d-flex flex-column align-items-center">
+              <div className="d-flex flex-column align-items-center">
               <h6 className="my-2">Name: {name}</h6>
               <h6 className="my-2">Last Name: {last_name}</h6>
               <h6 className="my-2">ID Number: {idNumber}</h6>

@@ -19,7 +19,7 @@ const MyVerticallyCenteredModal = (props) => {
             },
         };
 
-        const response = await axios.post(`/upload`, formData, config);
+        const response = await axios.post(`https://thai-card.onrender.com/upload`, formData, config);
 
         // Log the entire response for debugging
         console.log('Response:', response);
