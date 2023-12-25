@@ -18,7 +18,6 @@ const MyVerticallyCenteredModal = (props) => {
                 'Content-Type': 'multipart/form-data',
             },
         };
-
         const response = await axios.post(`https://thai-card.onrender.com/upload`, formData, config);
 
         // Log the entire response for debugging

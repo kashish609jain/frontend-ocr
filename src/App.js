@@ -18,6 +18,7 @@ const App = () => {
   const [date_of_expiry, setDOE] = useState("date of expiry");
   const [imageloading, setImageLoading] = useState(false);
   const [isFindingID, setisFindingID] = useState(false);
+  const [modalEdit, setModalEditShow] = useState(false);
 
   const handleSave = async () => {
     setIsImageUploaded(false);
@@ -114,6 +115,11 @@ const App = () => {
             setLastName={setLastName}
             setName={setName}
             setImageLoading={setImageLoading}
+          />
+          <EditModal
+            show={modalEdit}
+            onHide={() => setModalEditShow(false)}  
+            idNumber={idNumber}
           />
           {!imageloading && isImageUploaded ? (
               <div className="d-flex flex-column align-items-center">
