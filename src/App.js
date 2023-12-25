@@ -121,6 +121,7 @@ const App = () => {
             show={modalEdit}
             onHide={() => setModalEditShow(false)}  
             idNumber={idNumber}
+            setIdNumber={setIdNumber}
           />
           {!imageloading && isImageUploaded ? (
               <div className="d-flex flex-column align-items-center">
