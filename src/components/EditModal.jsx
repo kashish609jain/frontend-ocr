@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
-const EditModal = ({ show, onHide, idNumber }) => {
+const EditModal = ({ show, onHide, idNumber ,setIdNumber}) => {
   const [userData, setUserData] = useState({
     name: '',
     last_name: '',
@@ -15,10 +15,9 @@ const EditModal = ({ show, onHide, idNumber }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log(idNumber)
-        const response = await axios.get(`https://thai-card.onrender.com/api/user/${idNumber}`);
+        const response = await axios.get(`https://thai-card.onrender.com/api/citizen/${idNumber}`);
         const userDataFromApi = response.data; 
-        console.log(userDataFromApi)
+        // console.log(userDataFromApi)
         setUserData(userDataFromApi);
       } catch (error) {
         console.error('Error fetching user data:', error.message);
@@ -33,17 +32,18 @@ const EditModal = ({ show, onHide, idNumber }) => {
   const handleSaveChanges = async () => {
     try {
       // Assuming you have an API endpoint for updating user data
-      await axios.put(`https://thai-card.onrender.com/api/user/${idNumber}`, {
+     const response = await axios.put(`https://thai-card.onrender.com/api/citizen/${idNumber}`, {
         // Adjust the data structure based on your API requirements
-        idNumber:idNumber,
         name: userData.name,
         last_name: userData.last_name,
         date_of_birth: userData.date_of_birth,
         date_of_issue: userData.date_of_issue,
         date_of_expiry: userData.date_of_expiry,
       });
-
+      console.log(userData)
+      console.log(response.data)
       onHide();
+      setIdNumber("")
     } catch (error) {
       console.error('Error updating user data:', error.message);
     }
@@ -69,7 +69,7 @@ const EditModal = ({ show, onHide, idNumber }) => {
             type="text"
             id="firstName"
             className="form-control"
-            value={userData.name}
+            value={userData.last_name}
             onChange={(e) => setUserData({ ...userData, last_name: e.target.value })}
           />
            <label htmlFor="firstName">Date of Birth:</label>
@@ -77,7 +77,7 @@ const EditModal = ({ show, onHide, idNumber }) => {
             type="text"
             id="firstName"
             className="form-control"
-            value={userData.name}
+            value={userData.date_of_birth}
             onChange={(e) => setUserData({ ...userData, date_of_birth: e.target.value })}
           />
            <label htmlFor="firstName">Date of Issue:</label>
@@ -85,7 +85,7 @@ const EditModal = ({ show, onHide, idNumber }) => {
             type="text"
             id="firstName"
             className="form-control"
-            value={userData.name}
+            value={userData.date_of_issue}
             onChange={(e) => setUserData({ ...userData, date_of_issue: e.target.value })}
           />
            <label htmlFor="firstName">Date of Expiry:</label>
@@ -93,7 +93,7 @@ const EditModal = ({ show, onHide, idNumber }) => {
             type="text"
             id="firstName"
             className="form-control"
-            value={userData.name}
+            value={userData.date_of_expiry}
             onChange={(e) => setUserData({ ...userData, date_of_expiry: e.target.value })}
           />
         </div>

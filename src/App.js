@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState } from "react";
 import { Button, Image } from "react-bootstrap";
 import MyVerticallyCenteredModal from "./components/Modal";
+import EditModal from "./components/EditModal"
 import Header from "./components/Header";
 import axios from "axios";
 
