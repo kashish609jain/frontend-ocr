@@ -74,9 +74,8 @@ const MyVerticallyCenteredModal = (props) => {
     props.onHide();
 
     if (!image) {
-      alert("Only images are Allowed");
-      window.location.reload(); // You might want to use a more sophisticated approach for navigation
       setError("Please upload a valid image file.");
+      // setIsImageUploaded(false)
       return;
     }
 

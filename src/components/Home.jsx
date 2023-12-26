@@ -230,13 +230,7 @@ const Home = () => {
                     </div>
                   </div>
                 ) : !isImageUploaded && imageloading ? (
-                  <h2
-                    style={{
-                      margin: "0 auto",
-                      color: "blue",
-                      textAlign: "center",
-                    }}
-                  >
+                  <h2 className="text-align-start">
                     Loading Details....
                   </h2>
                 ) : null}
