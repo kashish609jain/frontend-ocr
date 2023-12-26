@@ -49,6 +49,7 @@ const EditModal = ({ show, onHide, idNumber, setIdNumber }) => {
 
       onHide();
       setIdNumber("");
+      window.location.reload()
     } catch (error) {
       console.error("Error updating user data:", error.message);
     }
