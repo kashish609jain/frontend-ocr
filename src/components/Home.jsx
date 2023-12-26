@@ -24,11 +24,11 @@ const Home = () => {
   const [error, setError] = useState(null);
   const [showModalHistory, setShowModalHistory] = useState(false);
 
-  // const handleUpdateID = () => {
-  //   setModalEditShow(true);
-  //   setisFindingID(false);
-  // };
-
+ 
+  const handleLinkClick = () => {
+    window.location.href = '#';
+    console.log('Link clicked!');
+  };
   const handleSave = async () => {
     setIsImageUploaded(false);
 
@@ -79,60 +79,6 @@ const Home = () => {
     setShowModalHistory(true);
     setisFindingID(false);
   };
-
-  // const handleCancel = () => {
-  //   setIsImageUploaded(false);
-  //   setisFindingID(false);
-  //   setIdNumber("");
-  // };
-
-  // const handleDelete = async () => {
-  //   setIsImageUploaded(false);
-  //   setisFindingID(false);
-
-  //   console.log("IN DELETE CALL", idNumber);
-  //   console.log(idNumber);
-  //   try {
-  //     const response = await axios.delete(
-  //       `https://thai-card.onrender.com/api/citizen/${idNumber}`
-  //     );
-  //     setIdNumber("");
-  //   } catch (error) {
-  //     console.error("Error during data deletion:", error.message);
-  //   }
-  // };
-
-  // const handleFind = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `https://thai-card.onrender.com/api/citizen/${idNumber}`
-  //     );
-  //     if (Object.keys(response.data).length === 0) {
-  //       // Set an error or handle it as appropriate for your application
-  //       setError("Citizen Not Found With The Provided ID");
-  //       return;
-  //     }
-  //     const {
-  //       name,
-  //       identification_number,
-  //       last_name,
-  //       date_of_birth,
-  //       date_of_issue,
-  //       date_of_expiry,
-  //     } = response.data;
-  //     setIdentification_number(identification_number);
-  //     setDOB(date_of_birth);
-  //     setDOE(date_of_expiry);
-  //     setName(name);
-  //     setLastName(last_name);
-  //     setDOI(date_of_issue);
-  //     setisFindingID(true);
-  //     setError(null);
-  //   } catch (error) {
-  //     console.error("Error during data retrieval:", error.message);
-  //     setError(null);
-  //   }
-  // };
 
   return (
     <>
@@ -207,19 +153,18 @@ const Home = () => {
                     <h6 className="my-2">Date Of Issue: {date_of_issue}</h6>
                     <h6 className="my-2">Date Of Expiry: {date_of_expiry}</h6>
                     <div className="my-3 p-3 ">
-                      {name &&
-                        last_name &&
-                        date_of_birth &&
-                        date_of_issue &&
-                        date_of_expiry && (
-                          <Button
-                            className="mt-3 ml-2"
-                            variant="success"
-                            onClick={handleSave}
-                          >
-                            Save
-                          </Button>
-                        )}
+                      {idNumber ? (
+                        <Button
+                          className="mt-3 ml-2"
+                          variant="success"
+                          onClick={handleSave}
+                        >
+                          Save
+                        </Button>
+                      ) : (
+                        <Button className="mt-3 ml-2"
+                        variant="success" onClick={handleLinkClick}>Insufficient data. Cannot save.</Button>
+                      )}
 
                       <Button
                         className="mt-3  mx-auto mr-2"
@@ -231,9 +176,7 @@ const Home = () => {
                     </div>
                   </div>
                 ) : !isImageUploaded && imageloading ? (
-                  <h2 className="text-align-start">
-                    Loading Details....
-                  </h2>
+                  <h2 className="text-align-start">Loading Details....</h2>
                 ) : null}
               </div>
             </div>
