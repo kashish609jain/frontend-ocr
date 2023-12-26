@@ -1,6 +1,6 @@
-## I have made ocr using google vision api 
-# Tech stack - Mongodb ExpressJs ReactJs Nodejs 
-# To set this repo in local system one should clone the code from github and run npm install and then npm start
+# I have made ocr using google vision api 
+## Tech stack - Mongodb ExpressJs ReactJs Nodejs 
+## To set this repo in local system one should clone the code from github and run npm install and then npm start
 
 ## features 
 - you can upload thai card image and fetch data from it using google vision api
