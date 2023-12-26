@@ -3,11 +3,15 @@ import Navbar from 'react-bootstrap/Navbar';
 
 const Header = () => {
   return (
-    <Navbar className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-      <Container className='c1'>
-        <h1 className="navbar-brand text-center" style={{ color: '#00FFFF', fontFamily: 'cursive', fontSize: '2rem' }}>
-          OCR for Thai Card by kashish Jain 
-        </h1>
+    <Navbar className="bg-body-tertiary">
+      <Container>
+        <Navbar.Brand href="#home">OCR reader</Navbar.Brand>
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+           Developed By Kashish Jain
+          </Navbar.Text>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );

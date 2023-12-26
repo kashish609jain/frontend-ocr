@@ -4,7 +4,9 @@ import axios from 'axios';
 
 const MyVerticallyCenteredModal = (props) => {
   const [file, setFile] = useState(null);
-
+  const [image, setImage] = useState();
+  const [isImageUploaded, setIsImageUploaded] = useState(null);
+  const [error, setError] = useState(null);
   const handleFileChange = async (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
@@ -60,6 +62,23 @@ const MyVerticallyCenteredModal = (props) => {
     props.setImage(URL.createObjectURL(file));
     setFile(null);
     props.onHide();
+
+    if (!image) {
+      setError('Please upload a valid image file.');
+      return;
+    }
+  
+    if (!['image/jpeg', 'image/png'].includes(image.type)) {
+      setError('Supported formats: JPEG, PNG.');
+      return;
+    }
+  
+    if (image.size > 2 * 1024 * 1024) {
+      setError('Maximum file size: 2MB.');
+      return;
+    }
+    setIsImageUploaded(image);
+    setError(null);
   };
 
   return (
@@ -83,6 +102,11 @@ const MyVerticallyCenteredModal = (props) => {
             className="mb-3"
           />
         </div>
+        {error && (
+        <div style={{ color: 'red', marginTop: '10px' }}>
+          <p>Error: {error}</p>
+        </div>
+      )}
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={handleUpload} disabled={!file}>
