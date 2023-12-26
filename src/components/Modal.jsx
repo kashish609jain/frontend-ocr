@@ -73,22 +73,6 @@ const MyVerticallyCenteredModal = (props) => {
     props.setImage(URL.createObjectURL(file));
     setFile(null);
     props.onHide();
-
-    if (!image) {
-      setError("Please upload a valid image file.");
-      // setIsImageUploaded(false)
-      return;
-    }
-
-    if (!["image/jpeg", "image/png"].includes(image.type)) {
-      setError("Supported formats: JPEG, PNG.");
-      return;
-    }
-
-    if (image.size > 2 * 1024 * 1024) {
-      setError("Maximum file size: 2MB.");
-      return;
-    }
     setIsImageUploaded(image);
     setError(null);
   };

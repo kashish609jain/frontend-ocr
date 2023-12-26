@@ -24,10 +24,9 @@ const Home = () => {
   const [error, setError] = useState(null);
   const [showModalHistory, setShowModalHistory] = useState(false);
 
- 
   const handleLinkClick = () => {
-    window.location.href = '#';
-    console.log('Link clicked!');
+    window.location.href = "#";
+    console.log("Link clicked!");
   };
   const handleSave = async () => {
     setIsImageUploaded(false);
@@ -45,29 +44,21 @@ const Home = () => {
         }
       );
 
-      // Debugging: Log the response data to see what is received
       console.log("Response Data:", response.data);
 
-      // Check if the response contains the expected data
       if (!response.data || Object.keys(response.data).length === 0) {
-        // Debugging: Log a message to see if this block is reached
         console.log("Invalid image. Cannot save.");
 
-        // Display an error message
         alert("Image invalid. Cannot save.");
 
-        // Debugging: Log a message to see if the alert is shown
         console.log("Alert displayed.");
 
-        // Return without further processing
         return;
       }
 
-      // Continue with further processing or UI updates as needed
       setIdNumber("");
     } catch (error) {
       console.error("Error saving user data:", error.message);
-      // Handle other error cases if needed
     }
   };
 
@@ -162,8 +153,13 @@ const Home = () => {
                           Save
                         </Button>
                       ) : (
-                        <Button className="mt-3 ml-2"
-                        variant="success" onClick={handleLinkClick}>Insufficient data. Cannot save.</Button>
+                        <Button
+                          className="mt-3 ml-2"
+                          variant="success"
+                          onClick={handleLinkClick}
+                        >
+                          Insufficient data. Cannot save.
+                        </Button>
                       )}
 
                       <Button
