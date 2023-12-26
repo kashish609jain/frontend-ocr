@@ -15,6 +15,7 @@
 - Suppose if data is not present in some feild but present in some other feild then also user can save the data
 - user can only save data when data is completely fetched from ocr and field is complete
 - if same image is being uploaded and saved numerous time then also one time data will be saved in data base
+- 
 
 
 
