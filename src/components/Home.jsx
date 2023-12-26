@@ -74,7 +74,6 @@ const Home = () => {
     setModalShow(true);
     setisFindingID(false);
   };
-
   const handleHistory = () => {
     setShowModalHistory(true);
     setisFindingID(false);
@@ -149,6 +148,7 @@ const Home = () => {
               >
                 <h1>THAI CARD OCR FOR QOALA</h1>
                 <h2>MADE BY KASHISH JAIN - 19DEC011</h2>
+
                 <div className="d-flex justify-content-center justify-content-lg-start">
                   <Button
                     variant="light"

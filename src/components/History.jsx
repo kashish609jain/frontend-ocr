@@ -8,9 +8,8 @@ const HistoryModal = ({ show, onHide }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
-  const [idNumber, setIdNumber] = useState()
+  const [idNumber, setIdNumber] = useState();
   const [modalEdit, setModalEditShow] = useState(false);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,31 +55,30 @@ const HistoryModal = ({ show, onHide }) => {
   };
 
   const handleEdit = async (identification_number) => {
-
-    setIdNumber(identification_number)
+    setIdNumber(identification_number);
     setModalEditShow(true);
   };
-  
+
   const handleSave = async (identification_number) => {
     try {
       // Assuming you have an API endpoint to get data by identification number
-      const response = await axios.get(`https://thai-card.onrender.com/api/citizen/${identification_number}`);
-  
+      const response = await axios.get(
+        `https://thai-card.onrender.com/api/citizen/${identification_number}`
+      );
+
       // Convert the response object to an array
       const dataArray = Object.values(response.data);
-  
+
       // Update the modal data or any state you need
       setHistoryData(dataArray);
-  
-      onHide()
+
+      onHide();
       // Close the modal or perform any other actions
     } catch (error) {
       console.error("Error fetching data:", error.message);
       // Handle errors or display a message to the user
     }
   };
-  
-  
 
   return (
     <Modal
@@ -104,11 +102,11 @@ const HistoryModal = ({ show, onHide }) => {
           />
         </Form.Group>
         <EditModal
-            show={modalEdit}
-            onHide={() => setModalEditShow(false)}
-            idNumber={idNumber}
-            setIdNumber={setIdNumber}
-          />
+          show={modalEdit}
+          onHide={() => setModalEditShow(false)}
+          idNumber={idNumber}
+          setIdNumber={setIdNumber}
+        />
         {loading ? (
           <p>Loading history data...</p>
         ) : (
@@ -133,18 +131,26 @@ const HistoryModal = ({ show, onHide }) => {
                   <td>{item.date_of_issue}</td>
                   <td>{item.date_of_expiry}</td>
                   <td>
-                    <Button variant="info" onClick={() => handleEdit(item.identification_number)}>
+                    <Button
+                      variant="info"
+                      onClick={() => handleEdit(item.identification_number)}
+                    >
                       Edit
                     </Button>
                   </td>
                   <td>
                     <Button
-                      variant="danger" onClick={() => handleDelete(item.identification_number)}>
+                      variant="danger"
+                      onClick={() => handleDelete(item.identification_number)}
+                    >
                       Delete
                     </Button>
                   </td>
                   <td>
-                    <Button variant="warning" onClick={() => handleSave(item.identification_number)}>
+                    <Button
+                      variant="warning"
+                      onClick={() => handleSave(item.identification_number)}
+                    >
                       save
                     </Button>
                   </td>

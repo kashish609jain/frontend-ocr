@@ -1,5 +1,5 @@
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
+import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
 
 const Header = () => {
   return (
@@ -8,13 +8,11 @@ const Header = () => {
         <Navbar.Brand href="#home">OCR reader</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
-           Developed By Kashish Jain
-          </Navbar.Text>
+          <Navbar.Text>Developed By Kashish Jain</Navbar.Text>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
-}
+};
 
 export default Header;
